@@ -2,6 +2,8 @@
 
 A VS Code extension that auto-accepts [Claude Code](https://docs.claude.com/en/docs/claude-code)'s interactive terminal confirmation prompts (`Do you want to proceed?`, `❯ 1. Yes`) so you don't have to babysit long-running sessions.
 
+![Work completed](images/enter-key.jpeg)
+
 ## How it works
 
 - Uses VS Code's **Terminal Shell Integration API** to watch a terminal's live command output as it streams, rather than blindly spamming Enter on a timer.
