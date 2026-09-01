@@ -3,7 +3,7 @@
   "displayName": "Claude Auto-Accept",
   "description": "Auto-accepts Claude Code's terminal confirmation prompts by watching command output via VS Code's Terminal Shell Integration API and sending Enter.",
   "version": "0.1.0",
-  "publisher": "local",
+  "publisher": "varfmx",
   "license": "MIT",
   "repository": {
     "type": "git",
