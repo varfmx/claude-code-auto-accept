@@ -1,6 +1,6 @@
 {
   "name": "claude-code-auto-accept",
-  "displayName": "Claude Auto-Accept",
+  "displayName": "Claude Code Auto-Accept",
   "description": "Auto-accepts Claude Code's terminal confirmation prompts by watching command output via VS Code's Terminal Shell Integration API and sending Enter.",
   "version": "0.1.0",
   "publisher": "varfmx",
