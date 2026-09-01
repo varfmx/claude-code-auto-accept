@@ -23,7 +23,7 @@
     "commands": [
       {
         "command": "claudeAutoAccept.toggle",
-        "title": "Claude Auto-Accept: Toggle for Active Terminal"
+        "title": "Claude Code Auto-Accept: Toggle for Active Terminal"
       }
     ]
   },

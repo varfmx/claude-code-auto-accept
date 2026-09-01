@@ -42,7 +42,7 @@ function updateStatusBar(): void {
 function toggleActiveTerminal(): void {
   const terminal = vscode.window.activeTerminal;
   if (!terminal) {
-    vscode.window.showInformationMessage('Claude Auto-Accept: no active terminal to arm.');
+    vscode.window.showInformationMessage('Claude Code Auto-Accept: no active terminal to arm.');
     return;
   }
 
@@ -84,9 +84,9 @@ async function watchExecution(terminal: vscode.Terminal, execution: vscode.Termi
 }
 
 export function activate(context: vscode.ExtensionContext): void {
-  output = vscode.window.createOutputChannel('Claude Auto-Accept');
+  output = vscode.window.createOutputChannel('Claude Code Auto-Accept');
   context.subscriptions.push(output);
-  output.appendLine('Claude Auto-Accept activated');
+  output.appendLine('Claude Code Auto-Accept activated');
 
   statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
   statusBarItem.command = 'claudeAutoAccept.toggle';
@@ -114,7 +114,7 @@ export function activate(context: vscode.ExtensionContext): void {
     );
   } else {
     vscode.window.showWarningMessage(
-      'Claude Auto-Accept: this VS Code version lacks the Terminal Shell Integration API, so prompts cannot be detected.'
+      'Claude Code Auto-Accept: this VS Code version lacks the Terminal Shell Integration API, so prompts cannot be detected.'
     );
   }
 
