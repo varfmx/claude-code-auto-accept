@@ -1,0 +1,40 @@
+{
+  "name": "claude-auto-accept",
+  "displayName": "Claude Auto-Accept",
+  "description": "Auto-accepts Claude Code's terminal confirmation prompts by watching command output via VS Code's Terminal Shell Integration API and sending Enter.",
+  "version": "0.1.0",
+  "publisher": "local",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/varfmx/claude-auto-accept.git"
+  },
+  "engines": {
+    "vscode": "^1.93.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "claudeAutoAccept.toggle",
+        "title": "Claude Auto-Accept: Toggle for Active Terminal"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.93.0",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.5.0"
+  }
+}
