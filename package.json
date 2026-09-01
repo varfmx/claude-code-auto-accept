@@ -5,9 +5,10 @@
   "version": "0.1.2",
   "publisher": "varfmx",
   "license": "MIT",
+  "icon": "images/icon.png",
   "repository": {
     "type": "git",
-    "url": "https://github.com/varfmx/claude-auto-accept.git"
+    "url": "https://github.com/varfmx/claude-code-auto-accept.git"
   },
   "engines": {
     "vscode": "^1.93.0"
