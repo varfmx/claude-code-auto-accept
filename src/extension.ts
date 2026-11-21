@@ -6,9 +6,19 @@ import * as vscode from 'vscode';
 //     2. No
 // The "❯ 1. Yes" pattern also covers edit/create/bash approval variants
 // that don't share the exact "Do you want to proceed?" wording.
-const PROMPT_PATTERNS: RegExp[] = [/do you want to (proceed|make this edit|create)/i, /❯\s*1\.\s*yes/i];
+// Claude in Chrome permission prompts use Allow/Deny instead:
+//   Claude in Chrome wants to
+//   1. Allow
+//   2. Deny (esc)
+const PROMPT_PATTERNS: RegExp[] = [
+  /do you want to (proceed|make this edit|create)/i,
+  /❯\s*1\.\s*yes/i,
+  /claude in chrome wants to/i,
+  /❯\s*1\.\s*allow/i,
+  /1\.\s*allow\s+2\.\s*deny/i,
+];
 
-const DEBOUNCE_MS = 2000;
+const DEBOUNCE_MS = 500;
 const BUFFER_MAX = 4000;
 
 let statusBarItem: vscode.StatusBarItem;
@@ -69,10 +79,13 @@ async function watchExecution(terminal: vscode.Terminal, execution: vscode.Termi
         }
         const now = Date.now();
         const last = lastSentAt.get(terminal) ?? 0;
-        if (now - last > DEBOUNCE_MS) {
+        const sinceLast = now - last;
+        if (sinceLast > DEBOUNCE_MS) {
           lastSentAt.set(terminal, now);
           output.appendLine(`[${terminal.name}] prompt detected, sending Enter`);
           terminal.sendText('', true);
+        } else {
+          output.appendLine(`[${terminal.name}] prompt detected, debounced (${sinceLast}ms since last send)`);
         }
         buffer = '';
       }
